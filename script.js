@@ -1,3 +1,7 @@
+// Signals to the inline fallback in <head> that the reveal logic is running,
+// so it won't force-show everything.
+window.__vigilReady = true;
+
 // Nav: transparent over the hero, solid once scrolled past it.
 const nav = document.getElementById("nav");
 const onScroll = () => {

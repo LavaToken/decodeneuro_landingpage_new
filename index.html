@@ -34,6 +34,20 @@
     };
   </script>
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    // Enable the scroll-reveal hidden state up front (avoids a flash), but if the
+    // external script never initializes, force everything visible as a safety net.
+    document.documentElement.classList.add("has-js");
+    window.addEventListener("DOMContentLoaded", function () {
+      setTimeout(function () {
+        if (!window.__vigilReady) {
+          document.querySelectorAll(".fade-up").forEach(function (el) {
+            el.classList.add("in");
+          });
+        }
+      }, 1200);
+    });
+  </script>
 </head>
 <body class="bg-page font-sans text-body antialiased">
 
