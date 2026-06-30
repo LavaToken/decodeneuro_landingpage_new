@@ -7,234 +7,208 @@
   <meta name="description" content="Vigil is a non-invasive ICU medical device that reveals real-time brain activity to diagnose and triage patients who can't respond." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            page: "#F0EEEA",
+            ink: "#1A1714",
+            sage: "#2C4A3E",
+            sand: "#8B7355",
+            muted: "#9E9189",
+            line: "#E5E0D8",
+            body: "#6B6259",
+            surface: "#E8E0D4",
+          },
+          fontFamily: {
+            display: ['"DM Sans"', "Inter", "system-ui", "sans-serif"],
+            sans: ["Inter", "system-ui", "sans-serif"],
+          },
+          letterSpacing: { tightest: "-0.02em" },
+          maxWidth: { content: "1200px" },
+        },
+      },
+    };
+  </script>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body class="bg-page font-sans text-body antialiased">
+
+  <!-- NAV -->
+  <header id="nav" class="fixed inset-x-0 top-0 z-50 transition-colors duration-300">
+    <nav class="mx-auto flex max-w-content items-center justify-between px-6 py-5 md:px-12">
+      <a href="#top" class="nav-brand text-lg font-semibold tracking-[0.22em] text-white transition-colors duration-300">VIGIL</a>
+      <div class="flex items-center gap-8">
+        <div class="hidden items-center gap-8 md:flex">
+          <a href="#who" class="nav-link text-sm font-medium text-white/80 transition-colors duration-200 hover:text-white">Who we are</a>
+          <a href="#how" class="nav-link text-sm font-medium text-white/80 transition-colors duration-200 hover:text-white">How it works</a>
+          <a href="#usecases" class="nav-link text-sm font-medium text-white/80 transition-colors duration-200 hover:text-white">Use cases</a>
+        </div>
+        <a href="#contact" class="nav-cta rounded-full border-[1.5px] border-white px-5 py-2 text-sm font-medium text-white transition-colors duration-200">Request a pilot</a>
+      </div>
+    </nav>
+  </header>
+
   <main id="top">
+
     <!-- HERO -->
-    <section class="hero">
-      <div class="hero-bg" aria-hidden="true">
-        <svg class="wave" viewBox="0 0 1440 320" preserveAspectRatio="none">
-          <defs>
-            <path id="eeg" d="M0,160 L120,160 L150,160 L165,90 L180,230 L200,120 L215,160 L360,160 L390,160 L405,60 L420,250 L440,110 L455,160 L600,160 L630,160 L645,100 L660,210 L680,130 L695,160 L840,160 L870,160 L885,70 L900,240 L920,115 L935,160 L1080,160 L1110,160 L1125,95 L1140,225 L1160,125 L1175,160 L1320,160 L1350,160 L1365,85 L1380,235 L1400,120 L1415,160 L1440,160" />
-            <path id="eeg2" d="M0,160 L60,160 L80,140 L100,178 L130,150 L160,170 L190,148 L240,160 L300,160 L330,128 L355,196 L380,150 L430,160 L520,160 L545,120 L565,200 L585,158 L640,160 L720,160 L745,138 L770,182 L800,150 L860,160 L960,160 L990,126 L1012,198 L1035,150 L1090,160 L1180,160 L1205,140 L1228,180 L1255,150 L1320,160 L1410,160 L1440,160" />
-          </defs>
-          <g class="wave-soft-pos">
-            <g class="wave-scroll wave-soft">
-              <use href="#eeg2" x="0" />
-              <use href="#eeg2" x="1440" />
-            </g>
-          </g>
-          <g class="wave-scroll wave-main">
-            <use href="#eeg" x="0" />
-            <use href="#eeg" x="1440" />
-          </g>
-        </svg>
+    <section class="relative h-screen min-h-[640px] w-full overflow-hidden">
+      <img src="assets/beach.webp" alt="A lone surfer walks along a wide, misty beach at golden hour." class="absolute inset-0 h-full w-full object-cover object-center" />
+      <div class="hero-overlay absolute inset-0"></div>
+      <div class="hero-nav-scrim absolute inset-x-0 top-0 z-10 h-40"></div>
+
+      <!-- lower-left headline block -->
+      <div class="absolute bottom-16 left-6 z-10 max-w-2xl md:left-12">
+        <span class="mb-5 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-white/85">
+          <span class="text-white">●</span> Non-invasive neurodiagnostics
+        </span>
+        <h1 class="font-display text-[clamp(3rem,8.5vw,6.5rem)] font-extrabold leading-[1.03] tracking-tightest text-white">
+          See the mind<br />the body can't show.
+        </h1>
       </div>
-      <div class="container hero-content">
-        <span class="eyebrow eyebrow-light">Non-invasive neurodiagnostics</span>
-        <h1 class="hero-title">See the mind<br />the body can't show.</h1>
-        <p class="hero-sub">Real time bedside brain activity — revealing awareness, intent, and recovery in patients who cannot move, speak, or respond.</p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-solid">Request a pilot <span class="arrow">↗</span></a>
-          <a href="#problem" class="btn btn-ghost">Why it matters</a>
-        </div>
+
+      <!-- lower-right copy block -->
+      <div class="absolute bottom-16 right-6 z-10 hidden max-w-[280px] md:right-12 md:block">
+        <p class="text-[15px] leading-relaxed text-white/90">
+          Real time bedside brain activity — revealing awareness, intent, and recovery in patients who cannot move, speak, or respond.
+        </p>
+        <a href="#contact" class="mt-6 inline-flex rounded-full border-[1.5px] border-white px-6 py-3 text-sm font-medium text-white transition-colors duration-200 hover:bg-sage hover:border-sage">
+          Request a pilot
+        </a>
+      </div>
+
+      <!-- bottom trust strip -->
+      <div class="absolute inset-x-0 bottom-0 z-10 flex h-12 items-center justify-between bg-ink/55 px-6 backdrop-blur-sm md:px-12">
+        <span class="text-[11px] font-medium uppercase tracking-[0.18em] text-white/80">Built for the ICU</span>
+        <span aria-hidden="true" class="h-3 w-px bg-white/30"></span>
+        <span class="text-[11px] font-medium uppercase tracking-[0.18em] text-white/80">Completely non-invasive</span>
       </div>
     </section>
 
-    <!-- PROBLEM / STAT -->
-    <section class="problem" id="problem">
-      <div class="problem-scene" role="img" aria-label="A family sits at the bedside of an unresponsive ICU patient, wishing they knew what their loved one was thinking.">
-        <div class="problem-scrim" aria-hidden="true"></div>
-        <div class="container problem-content">
-          <div class="problem-top">
-            <div class="stat-headline">
-              <span class="stat-num" data-count="1000000">0</span>
-              <span class="stat-label">patients every year cannot be accurately diagnosed</span>
+    <!-- SECTION 2 — WHO WE ARE -->
+    <section id="who" class="relative bg-page px-6 py-16 md:px-12 md:py-20">
+      <div class="mx-auto max-w-content">
+        <span class="fade-up mb-12 block text-[11px] font-medium uppercase tracking-[0.18em] text-muted">● Who we are</span>
+
+        <div class="grid items-center gap-8 lg:grid-cols-[0.95fr_1.05fr_1.5fr] lg:gap-12">
+          <!-- COLUMN 1 — left image (smaller, vertically centered) + floating chip -->
+          <div class="fade-up relative h-[300px] sm:h-[380px] lg:translate-y-6">
+            <img src="assets/1.webp" alt="" class="h-full w-full rounded-2xl object-cover shadow-[0_24px_60px_rgba(26,23,20,0.14)]" />
+            <div class="chip absolute -top-5 -left-5 z-20">
+              <div class="font-display text-2xl font-extrabold tracking-tighter text-ink">1,000,000</div>
+              <p class="mt-1 max-w-[140px] text-xs leading-snug text-body">patients each year cannot be accurately diagnosed</p>
             </div>
           </div>
-          <div class="problem-cards">
-            <div class="pcard">
-              <div class="pcard-num">15–20%</div>
-              <p>of unresponsive patients show hidden, covert consciousness that standard bedside exams miss entirely.</p>
-            </div>
-            <div class="pcard pcard-dark">
-              <div class="pcard-num">Too soon</div>
-              <p>Misjudged prognosis leads to the <strong>early withdrawal of life-sustaining care</strong> — the leading cause of death in the neuro-ICU.</p>
-            </div>
-            <div class="pcard">
-              <div class="pcard-num">Invisible</div>
-              <p>Today's tools can't continuously see the brain. Critical decisions are made on incomplete information.</p>
-            </div>
+
+          <!-- COLUMN 2 — center text (vertically centered, no chip) -->
+          <div class="fade-up relative z-10">
+            <h2 class="font-display text-[clamp(2rem,3.8vw,2.8rem)] font-extrabold leading-[1.04] tracking-tightest text-ink">
+              A better way to diagnose and triage ICU patients.
+            </h2>
+            <p class="mt-5 max-w-xs text-[17px] leading-[1.65] text-body">
+              Vigil turns the bedside into a window on the brain — giving clinicians objective, continuous evidence to act with confidence.
+            </p>
+            <a href="#contact" class="mt-7 inline-flex rounded-full bg-sage px-7 py-3.5 text-sm font-medium text-white transition-colors duration-200 hover:bg-ink">
+              Request a pilot
+            </a>
+            <blockquote class="mt-6 border-l-2 border-sage pl-4 italic text-body text-[15px] leading-relaxed">
+              "A non-invasive headset that quietly, continuously understands the brain
+              — and what the patient cannot say."
+              <footer class="mt-2 not-italic text-[11px] uppercase tracking-[0.15em] text-muted">
+                Vigil One · bedside neuroimaging
+              </footer>
+            </blockquote>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- SOLUTION -->
-    <section class="solution" id="solution">
-      <div class="container">
-        <div class="solution-head">
-          <span class="eyebrow">Our answer</span>
-          <h2 class="section-title">A better way to diagnose<br />and triage ICU patients.</h2>
-          <p class="section-sub">Vigil turns the bedside into a window on the brain — giving clinicians objective, continuous evidence to act with confidence.</p>
-        </div>
-
-        <div class="feature-grid">
-          <article class="feature">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="12" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h3l2-3 2 6 2-4 1.5 3H21" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          <!-- COLUMN 3 — right image (taller, offset up) + two floating chips -->
+          <div class="fade-up relative h-[400px] sm:h-[520px] lg:-translate-y-6">
+            <img src="assets/2.webp" alt="" class="h-full w-full rounded-2xl object-cover shadow-[0_24px_60px_rgba(26,23,20,0.14)]" />
+            <div class="chip absolute top-8 left-5 z-20 lg:-left-14">
+              <div class="font-display text-2xl font-extrabold tracking-tighter text-sage">15–20%</div>
+              <p class="mt-1 max-w-[160px] text-xs leading-snug text-body">of unresponsive patients have hidden consciousness missed by standard exams</p>
             </div>
-            <h3>Built for the ICU</h3>
-            <p>A purpose-built medical device that lives at the bedside — designed for the realities of critical care, not the lab.</p>
-          </article>
-          <article class="feature">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3c4 4 6 6.5 6 10a6 6 0 1 1-12 0c0-3.5 2-6 6-10Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 14a3 3 0 0 0 3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <div class="chip absolute bottom-6 -right-4 z-20">
+              <div class="font-display text-xl font-extrabold tracking-tighter text-ink">Too soon</div>
+              <p class="mt-1 max-w-[140px] text-xs leading-snug text-body">misjudged prognosis is the leading cause of death in the neuro-ICU</p>
             </div>
-            <h3>Completely non-invasive</h3>
-            <p>No surgery, no implants. Vigil sits gently on the head and works through the skin — safe for any patient, any unit.</p>
-          </article>
-          <article class="feature">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <h3>Real-time brain insight</h3>
-            <p>Continuous, decodable neural signals — see how the brain responds the moment it happens, second by second.</p>
-          </article>
-          <article class="feature">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="2.4" fill="currentColor"/><path d="M12 4v2M12 18v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            </div>
-            <h3>Hears those who can't act</h3>
-            <p>Vigil detects responses from patients who cannot move or speak — surfacing the awareness behind the silence.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- SCIENCE TIMELINE -->
-    <section class="science" id="science">
-      <div class="container science-grid">
-        <div class="science-intro">
-          <span class="eyebrow">The science</span>
-          <h2 class="section-title">How Vigil listens<br />to a silent brain.</h2>
-          <p class="section-sub">From signal to insight in three steps — designed to give clinicians an answer they can trust.</p>
-        </div>
-        <ol class="timeline">
-          <li class="tl-item">
-            <span class="tl-dot"></span>
-            <span class="tl-step">Step 01</span>
-            <div class="tl-card">
-              <h3>Sense</h3>
-              <p>A non-invasive headset captures high-resolution brain activity continuously at the bedside — no implant, no disruption to care.</p>
-            </div>
-          </li>
-          <li class="tl-item">
-            <span class="tl-dot"></span>
-            <span class="tl-step">Step 02</span>
-            <div class="tl-card">
-              <h3>Decode</h3>
-              <p>Our neural models translate raw signals into meaningful markers of awareness, command-following, and cognitive response.</p>
-            </div>
-          </li>
-          <li class="tl-item">
-            <span class="tl-dot"></span>
-            <span class="tl-step">Step 03</span>
-            <div class="tl-card">
-              <h3>Decide</h3>
-              <p>Clear, objective evidence reaches the care team in real time — informing diagnosis, triage, and the most consequential decisions.</p>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- DEVICE SHOWCASE -->
-    <section class="device" id="device">
-      <div class="container">
-        <div class="device-card">
-          <div class="device-visual" aria-hidden="true">
-            <div class="device-ring"></div>
-            <div class="device-glow"></div>
-            <svg class="device-wave" viewBox="0 0 300 120" preserveAspectRatio="none">
-              <path d="M0,60 L60,60 L72,30 L84,90 L96,50 L108,60 L168,60 L180,20 L192,100 L204,55 L216,60 L300,60" fill="none" stroke="currentColor" stroke-width="2"/>
-            </svg>
-            <span class="device-tag">Vigil One · bedside neuroimaging</span>
-          </div>
-          <div class="device-copy">
-            <h2>Vigil One.</h2>
-            <p class="device-lead">A non-invasive headset that quietly, continuously understands the brain — and what the patient cannot say.</p>
-            <p class="device-fine">Real-time decoding at the bedside. The answer, when it matters most.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- AUDIENCE / PIONEERS -->
-    <section class="pioneers">
-      <div class="container">
-        <h2 class="section-title center">Pioneers wanted.</h2>
-        <p class="section-sub center">We're partnering with the teams who will define the future of critical care.</p>
-        <div class="pioneer-cards">
-          <a class="pioneer pioneer-a" href="#contact">
-            <div class="pioneer-overlay"></div>
-            <div class="pioneer-text">
-              <h3>Clinicians<br />&amp; Hospitals</h3>
-              <span class="btn btn-pill on-image">Start a clinical pilot <span class="arrow">↗</span></span>
-            </div>
-          </a>
-          <a class="pioneer pioneer-b" href="#contact">
-            <div class="pioneer-overlay"></div>
-            <div class="pioneer-text">
-              <h3>Researchers<br />&amp; Engineers</h3>
-              <span class="btn btn-pill on-image">Explore our technology <span class="arrow">↗</span></span>
-            </div>
-          </a>
+    <!-- SECTION 3 — HOW IT WORKS -->
+    <section id="how" class="bg-page px-6 py-16 md:px-12 md:py-20">
+      <div class="mx-auto max-w-content">
+        <span class="fade-up block text-[11px] font-medium uppercase tracking-[0.18em] text-muted">● Simple process</span>
+        <h2 class="fade-up mt-6 max-w-2xl font-display text-[clamp(2.5rem,5vw,3.4rem)] font-extrabold leading-[1.05] tracking-tightest text-ink">
+          How Vigil listens<br />to a silent brain.
+        </h2>
+
+        <!-- tabs -->
+        <div class="fade-up mt-14 flex flex-wrap gap-3" id="tabs">
+          <button class="tab-btn is-active" data-tab="0">
+            <span class="tab-num">01</span> Sense
+          </button>
+          <button class="tab-btn" data-tab="1">
+            <span class="tab-num">02</span> Decode
+          </button>
+          <button class="tab-btn" data-tab="2">
+            <span class="tab-num">03</span> Decide
+          </button>
+        </div>
+
+        <!-- panels -->
+        <div class="fade-up mt-10 max-w-3xl border-t border-line pt-10">
+          <div class="tab-panel" data-panel="0">
+            <p class="text-[clamp(1.25rem,2.4vw,1.75rem)] font-medium leading-[1.4] tracking-tightest text-ink">
+              A non-invasive headset captures high-resolution brain activity continuously at the bedside — no implant, no disruption to care.
+            </p>
+          </div>
+          <div class="tab-panel hidden" data-panel="1">
+            <p class="text-[clamp(1.25rem,2.4vw,1.75rem)] font-medium leading-[1.4] tracking-tightest text-ink">
+              Our neural models translate raw signals into meaningful markers of awareness, command-following, and cognitive response.
+            </p>
+          </div>
+          <div class="tab-panel hidden" data-panel="2">
+            <p class="text-[clamp(1.25rem,2.4vw,1.75rem)] font-medium leading-[1.4] tracking-tightest text-ink">
+              Clear, objective evidence reaches the care team in real time — informing diagnosis, triage, and the most consequential decisions.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="cta" id="contact">
-      <div class="container cta-inner">
-        <h2 class="cta-title">Give every patient<br />a voice.</h2>
-        <p class="cta-sub">Be among the first to bring real-time neurodiagnostics to your ICU.</p>
-        <form class="cta-form" onsubmit="return false;">
-          <input type="email" placeholder="you@hospital.org" aria-label="Work email" required />
-          <button class="btn btn-solid" type="submit">Request a pilot <span class="arrow">↗</span></button>
+    <!-- SECTION 5 — CONTACT / CTA -->
+    <section id="contact" class="bg-ink px-6 py-16 text-center md:px-12">
+      <div class="mx-auto flex max-w-content flex-col items-center">
+        <h2 class="fade-up font-display text-[clamp(2.5rem,6vw,4rem)] font-extrabold leading-[1.05] tracking-tightest text-white">
+          Give every patient<br />a voice.
+        </h2>
+        <p class="fade-up mt-6 max-w-[480px] text-[17px] leading-[1.65] text-muted">
+          Be among the first to bring real-time neurodiagnostics to your ICU.
+        </p>
+
+        <form class="fade-up mt-12 flex w-full max-w-2xl flex-col items-stretch gap-6 sm:flex-row sm:items-end" onsubmit="return false;">
+          <input type="text" aria-label="Name" placeholder="Name" class="contact-input flex-1" />
+          <input type="email" aria-label="Work email" placeholder="you@hospital.org" required class="contact-input flex-1" />
+          <button type="submit" class="rounded-full bg-sage px-8 py-3.5 text-sm font-medium text-white transition-colors duration-200 hover:bg-white hover:text-ink">
+            Request a pilot
+          </button>
         </form>
-        <span class="cta-fine">For research and investigational use. Not yet cleared by the FDA.</span>
+
+        <p class="fade-up mt-10 text-[13px] text-body">For research and investigational use. Not yet cleared by the FDA.</p>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span class="brand-name">Vigil</span>
-        <p>See the mind the body can't show.</p>
-      </div>
-      <div class="footer-cols">
-        <div>
-          <h4>Company</h4>
-          <a href="#">About</a><a href="#">Careers</a><a href="#">Press</a>
-        </div>
-        <div>
-          <h4>Product</h4>
-          <a href="#device">Vigil One</a><a href="#science">The Science</a><a href="#solution">Clinical Use</a>
-        </div>
-        <div>
-          <h4>Connect</h4>
-          <a href="#contact">Request a pilot</a><a href="#">Contact</a><a href="#">Newsletter</a>
-        </div>
-      </div>
-    </div>
-    <div class="container footer-bottom">
-      <span>© 2026 Vigil Neuro, Inc.</span>
-      <span>Privacy · Terms</span>
+  <!-- FOOTER -->
+  <footer class="bg-ink px-6 pb-12 md:px-12">
+    <div class="mx-auto flex max-w-content flex-col items-center justify-between gap-4 border-t border-white/10 pt-10 sm:flex-row">
+      <span class="font-display text-base font-bold tracking-[0.18em] text-body">VIGIL</span>
+      <span class="text-xs text-body">© 2026 Vigil Neuro, Inc. · Privacy · Terms</span>
     </div>
   </footer>
 
