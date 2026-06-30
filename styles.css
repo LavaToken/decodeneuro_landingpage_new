@@ -10,7 +10,9 @@
   --muted: #9e9189;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: auto; }
+
+.hero-bg { will-change: transform; }
 
 /* Hero overlay: dark at the bottom for legible white text, clear at top
    to preserve the photo's hazy golden-hour mood. */
