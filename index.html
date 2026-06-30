@@ -34,20 +34,6 @@
     };
   </script>
   <link rel="stylesheet" href="styles.css" />
-  <script>
-    // Enable the scroll-reveal hidden state up front (avoids a flash), but if the
-    // external script never initializes, force everything visible as a safety net.
-    document.documentElement.classList.add("has-js");
-    window.addEventListener("DOMContentLoaded", function () {
-      setTimeout(function () {
-        if (!window.__vigilReady) {
-          document.querySelectorAll(".fade-up").forEach(function (el) {
-            el.classList.add("in");
-          });
-        }
-      }, 1200);
-    });
-  </script>
 </head>
 <body class="bg-page font-sans text-body antialiased">
 
@@ -70,7 +56,7 @@
 
     <!-- HERO -->
     <section class="relative h-screen min-h-[640px] w-full overflow-hidden">
-      <img src="assets/beach.webp" alt="A lone surfer walks along a wide, misty beach at golden hour." class="absolute inset-0 h-full w-full object-cover object-center" />
+      <img src="/assets/beach.webp" alt="A lone surfer walks along a wide, misty beach at golden hour." class="absolute inset-0 h-full w-full object-cover object-center" />
       <div class="hero-overlay absolute inset-0"></div>
       <div class="hero-nav-scrim absolute inset-x-0 top-0 z-10 h-40"></div>
 
@@ -110,7 +96,7 @@
         <div class="grid items-center gap-8 lg:grid-cols-[0.95fr_1.05fr_1.5fr] lg:gap-12">
           <!-- COLUMN 1 — left image (smaller, vertically centered) + floating chip -->
           <div class="fade-up relative h-[300px] sm:h-[380px] lg:translate-y-6">
-            <img src="assets/1.webp" alt="" class="h-full w-full rounded-2xl object-cover shadow-[0_24px_60px_rgba(26,23,20,0.14)]" />
+            <img src="/assets/1.webp" alt="" class="h-full w-full rounded-2xl object-cover shadow-[0_24px_60px_rgba(26,23,20,0.14)]" />
             <div class="chip absolute -top-5 -left-5 z-20">
               <div class="font-display text-2xl font-extrabold tracking-tighter text-ink">1,000,000</div>
               <p class="mt-1 max-w-[140px] text-xs leading-snug text-body">patients each year cannot be accurately diagnosed</p>
@@ -139,7 +125,7 @@
 
           <!-- COLUMN 3 — right image (taller, offset up) + two floating chips -->
           <div class="fade-up relative h-[400px] sm:h-[520px] lg:-translate-y-6">
-            <img src="assets/2.webp" alt="" class="h-full w-full rounded-2xl object-cover shadow-[0_24px_60px_rgba(26,23,20,0.14)]" />
+            <img src="/assets/2.webp" alt="" class="h-full w-full rounded-2xl object-cover shadow-[0_24px_60px_rgba(26,23,20,0.14)]" />
             <div class="chip absolute top-8 left-5 z-20 lg:-left-14">
               <div class="font-display text-2xl font-extrabold tracking-tighter text-sage">15–20%</div>
               <p class="mt-1 max-w-[160px] text-xs leading-snug text-body">of unresponsive patients have hidden consciousness missed by standard exams</p>
@@ -226,6 +212,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script type="module" src="/script.js"></script>
 </body>
 </html>

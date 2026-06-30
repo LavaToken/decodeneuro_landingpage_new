@@ -1,6 +1,4 @@
-// Signals to the inline fallback in <head> that the reveal logic is running,
-// so it won't force-show everything.
-window.__vigilReady = true;
+document.documentElement.classList.add("has-js");
 
 // Nav: transparent over the hero, solid once scrolled past it.
 const nav = document.getElementById("nav");
@@ -13,18 +11,33 @@ onScroll();
 
 // Scroll-triggered fade-up reveal.
 const revealEls = document.querySelectorAll(".fade-up");
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("in");
-        revealObserver.unobserve(entry.target);
-      }
+if (revealEls.length && "IntersectionObserver" in window) {
+  revealEls.forEach((el) => el.classList.add("observed-hidden"));
+
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove("observed-hidden");
+          entry.target.classList.add("in");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+  revealEls.forEach((el) => revealObserver.observe(el));
+
+  // Safety net: reveal anything still hidden if the observer never fires.
+  setTimeout(() => {
+    document.querySelectorAll(".fade-up.observed-hidden:not(.in)").forEach((el) => {
+      el.classList.remove("observed-hidden");
+      el.classList.add("in");
     });
-  },
-  { threshold: 0.15 }
-);
-revealEls.forEach((el) => revealObserver.observe(el));
+  }, 1500);
+} else {
+  revealEls.forEach((el) => el.classList.add("in"));
+}
 
 // Interactive step tabs.
 const tabButtons = document.querySelectorAll(".tab-btn");

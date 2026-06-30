@@ -45,15 +45,14 @@ html { scroll-behavior: smooth; }
 }
 #nav.scrolled .nav-cta:hover { background: var(--ink); border-color: var(--ink); }
 
-/* Scroll-triggered fade-up (IntersectionObserver toggles .in).
-   The hidden initial state only applies when JS is active (html.has-js), so if
-   the script ever fails to load the content stays fully visible instead of blank. */
-.fade-up { transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-.has-js .fade-up { opacity: 0; transform: translateY(24px); }
+/* Scroll-triggered fade-up: visible by default; JS adds .observed-hidden only after
+   the observer is active. If the script fails, content stays visible instead of blank. */
+.fade-up { opacity: 1; transform: none; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.has-js .fade-up.observed-hidden { opacity: 0; transform: translateY(24px); }
 .has-js .fade-up.in { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  .has-js .fade-up { opacity: 1; transform: none; transition: none; }
+  .has-js .fade-up.observed-hidden { opacity: 1; transform: none; transition: none; }
 }
 
 /* Floating stat chips (Who we are) — white cards that lift slightly on hover
