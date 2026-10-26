@@ -1,4 +1,4 @@
-/* Vigil — custom layer on top of Tailwind utilities.
+/* Decode Neuro — custom layer on top of Tailwind utilities.
    Holds only what utilities can't express cleanly: the hero overlay,
    scroll-reveal animation, tab styling, contact inputs, and the
    single permitted serif (pull quote). */
@@ -72,14 +72,14 @@ html { scroll-behavior: auto; }
   box-shadow: 0 22px 50px rgba(26, 23, 20, 0.16);
 }
 
-/* Step tabs */
+/* Step tabs — tight labels, not capsules. The active step is an ink block. */
 .tab-btn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 24px;
-  border-radius: 9999px;
-  border: 1px solid var(--line);
+  padding: 10px 14px;
+  border-radius: 2px;
+  border: 1px solid transparent;
   background: transparent;
   color: var(--ink);
   font-family: "DM Sans", Inter, sans-serif;
@@ -87,22 +87,21 @@ html { scroll-behavior: auto; }
   font-size: 0.95rem;
   letter-spacing: -0.02em;
   cursor: pointer;
-  transition: background 0.2s ease-in-out, color 0.2s ease-in-out,
-    border-color 0.2s ease-in-out;
+  transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 .tab-btn .tab-num {
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.1em;
-  opacity: 0.55;
+  opacity: 0.45;
 }
-.tab-btn:hover { border-color: #8b7355; }
+.tab-btn:hover { background: rgba(26, 23, 20, 0.05); }
 .tab-btn.is-active {
   background: var(--ink);
-  border-color: var(--ink);
   color: #fff;
 }
 .tab-btn.is-active .tab-num { opacity: 0.7; }
+.tab-btn.is-active:hover { background: var(--ink); }
 
 /* Contact inputs: underline-only fields on the dark CTA block */
 .contact-input {
@@ -122,3 +121,67 @@ html { scroll-behavior: auto; }
 
 /* The one place a serif is allowed: the pull quote. */
 .quote-serif { font-family: Georgia, "Times New Roman", serif; }
+
+/* CAREERS — secondary theme. Sage is the field, not an accent,
+   and the nav keeps that green once it leaves the top of the page. */
+body.theme-sage {
+  background: var(--sage);
+  color: #e7ece9;
+}
+body.theme-sage ::selection {
+  background: #f0eeea;
+  color: var(--sage);
+}
+body.theme-sage .careers-hero {
+  background:
+    radial-gradient(80% 50% at 100% 28%, rgba(255, 255, 255, 0.06), transparent 55%),
+    linear-gradient(180deg, #2c4a3e 0%, #2c4a3e 22%, #243e34 100%);
+}
+body.theme-sage #nav {
+  background: #2c4a3e;
+}
+body.theme-sage #roles,
+body.theme-sage #apply {
+  scroll-margin-top: 6rem;
+}
+body.theme-sage #nav.scrolled {
+  background: #2c4a3e;
+  backdrop-filter: none;
+  box-shadow: 0 1px 0 rgba(240, 238, 234, 0.14);
+}
+body.theme-sage #nav.scrolled .nav-brand,
+body.theme-sage #nav.scrolled .nav-link { color: #fff; }
+body.theme-sage #nav.scrolled .nav-link { opacity: 0.75; }
+body.theme-sage #nav.scrolled .nav-link:hover,
+body.theme-sage .nav-link[aria-current="page"] { opacity: 1; color: #fff; }
+body.theme-sage #nav.scrolled .nav-cta {
+  background: #f0eeea;
+  border-color: #f0eeea;
+  color: var(--sage);
+}
+body.theme-sage #nav.scrolled .nav-cta:hover {
+  background: #fff;
+  border-color: #fff;
+  color: var(--ink);
+}
+body.theme-sage .contact-input { border-bottom-color: rgba(240, 238, 234, 0.35); }
+body.theme-sage .contact-input:focus { border-bottom-color: #f0eeea; }
+
+.role-list { border-bottom: 1px solid rgba(240, 238, 234, 0.16); }
+.role-row {
+  display: grid;
+  gap: 1.1rem;
+  border-top: 1px solid rgba(240, 238, 234, 0.16);
+  padding: 1.75rem 0.25rem;
+  transition: background 0.2s ease-in-out;
+}
+.role-row:hover { background: rgba(255, 255, 255, 0.045); }
+@media (min-width: 768px) {
+  .role-row {
+    grid-template-columns: 4.5rem minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 2rem;
+    margin: 0 -1rem;
+    padding: 2rem 1rem;
+  }
+}
